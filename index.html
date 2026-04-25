@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abed Colonna — Coach · Entrepreneur · Acteur Social</title>
+<meta name="description" content="Abed Colonna — Coach, Entrepreneur et Acteur Social. Rêver pour explorer, voir pour grandir.">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SEO — OPEN GRAPH (partage WhatsApp, Facebook, LinkedIn)
+     ═══════════════════════════════════════════════════════════════ -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://abed-colonna-site.web.app/">
+<meta property="og:title"       content="Abed Colonna — Coach · Entrepreneur · Acteur Social">
+<meta property="og:description" content="Rêver pour explorer, voir pour grandir. Coach en communication, entrepreneur social, pionnier de la Journée Mondiale du Bégaiement au Congo.">
+<meta property="og:image"       content="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"      content="fr_FR">
+<meta property="og:site_name"   content="Abed Colonna">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Abed Colonna — Coach · Entrepreneur · Acteur Social">
+<meta name="twitter:description" content="Rêver pour explorer, voir pour grandir.">
+<meta name="twitter:image"       content="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='serif' font-size='20' fill='%23D4A017'%3EAC%3C/text%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FIREBASE CONFIG — Mets la MÊME config que dans le CMS
+     ═══════════════════════════════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhl_G735CRlGubRkV_WsA5INYmKQGacwE",
+    authDomain: "abed-colonna-site.firebaseapp.com",
+    databaseURL: "https://abed-colonna-site-default-rtdb.firebaseio.com",
+    projectId: "abed-colonna-site",
+    storageBucket: "abed-colonna-site.firebasestorage.app",
+    messagingSenderId: "429431829235",
+    appId: "1:429431829235:web:7ed904e2a28bee5e41bd86"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  // IMPORTANT : le module ES ne peut pas appeler renderSite() du script classique.
+  // On dispatch un événement custom que le script classique écoute.
+  onValue(ref(database, 'cms'), (snapshot) => {
+    const data = snapshot.val();
+    window.dispatchEvent(new CustomEvent('firebase-data', { detail: data }));
+  });
+</script>
+
+<style>
+:root {
+  --ink:    #07080a;
+  --ink2:   #0e0f12;
+  --ink3:   #141519;
+  --ink4:   #1c1d22;
+  --gold:   #D4A017;
+  --gold2:  #e8b830;
+  --golddim:rgba(212,160,23,.13);
+  --copper: #B5611A;
+  --cream:  #F5EDD8;
+  --fog:    rgba(245,237,216,.55);
+  --mist:   rgba(245,237,216,.28);
+  --ghost:  rgba(245,237,216,.12);
+  --line:   rgba(245,237,216,.08);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:9000; opacity:.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* ─── LOADING ─── */
+#loading {
+  position:fixed; inset:0; background:var(--ink);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:2rem; z-index:999;
+}
+.loading-name { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; font-style:italic; color:var(--cream); letter-spacing:.08em; animation:fadeUp 1s ease both; }
+.loading-sub { font-size:.58rem; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); animation:fadeUp 1s ease .2s both; }
+.loading-bar { width:120px; height:1px; background:var(--line); position:relative; overflow:hidden; }
+.loading-bar::after { content:''; position:absolute; left:-100%; top:0; height:100%; width:100%; background:var(--gold); animation:loadPulse 1.4s ease infinite; }
+@keyframes loadPulse { 0%{left:-100%} 100%{left:100%} }
+
+#no-content { display:none; position:fixed; inset:0; background:var(--ink); align-items:center; justify-content:center; flex-direction:column; gap:1rem; }
+
+/* ─── HEADER / NAV ─── */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(7,8,10,.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:1.25rem 4rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.header-brand { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:500; letter-spacing:.06em; color:var(--cream); text-decoration:none; }
+.header-brand span { color:var(--gold); font-style:italic; }
+.header-nav { display:flex; gap:2rem; align-items:center; }
+.header-nav a { font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mist); text-decoration:none; transition:color .3s; }
+.header-nav a:hover { color:var(--gold) }
+.header-cta {
+  background:var(--gold); color:var(--ink); font-family:'Jost',sans-serif;
+  font-size:.58rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  padding:.65rem 1.5rem; text-decoration:none; transition:background .3s;
+}
+.header-cta:hover { background:var(--gold2); color:var(--ink) }
+
+/* ─── HERO ─── */
+#hero {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; padding:8rem 4rem 6rem;
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:0;
+  background:radial-gradient(ellipse at 30% 50%, rgba(212,160,23,.06) 0%, transparent 60%),
+             radial-gradient(ellipse at 70% 70%, rgba(181,97,26,.04) 0%, transparent 50%);
+}
+.hero-inner { position:relative; z-index:1; max-width:960px; margin:0 auto; text-align:center; animation:fadeUp .8s ease both; }
+.hero-eyebrow { font-size:.58rem; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; }
+.hero-name { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:400; line-height:1.05; color:var(--cream); margin-bottom:1.5rem; }
+.hero-name em { font-style:italic; color:var(--gold); }
+.hero-tagline { font-size:clamp(.9rem,1.5vw,1.2rem); color:var(--fog); line-height:1.9; max-width:600px; margin:0 auto 3rem; }
+.hero-roles { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:3.5rem; }
+.hero-role { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; padding:.45rem 1.25rem; border:1px solid var(--golddim); color:rgba(212,160,23,.7); }
+.hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--gold); color:var(--ink); font-family:'Jost',sans-serif;
+  font-size:.62rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase;
+  padding:1rem 2.5rem; text-decoration:none; transition:background .3s, transform .2s; display:inline-block;
+}
+.btn-primary:hover { background:var(--gold2); transform:translateY(-2px) }
+.btn-outline {
+  background:none; border:1px solid var(--line); color:var(--mist); font-family:'Jost',sans-serif;
+  font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+  padding:1rem 2rem; text-decoration:none; transition:all .3s; display:inline-block;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold) }
+
+/* ─── SECTIONS ─── */
+section { padding:6rem 4rem; }
+.section-label { font-size:.55rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,3vw,3rem); font-weight:400; font-style:italic; color:var(--cream); line-height:1.15; margin-bottom:1.5rem; }
+.section-rule { width:3rem; height:1px; background:var(--gold); margin-bottom:3rem; }
+
+/* ─── CTA BAR ─── */
+.cta-bar {
+  background:var(--golddim); border:1px solid rgba(212,160,23,.2);
+  padding:3rem 4rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;
+  margin:0 4rem;
+}
+.cta-bar-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; color:var(--cream); margin-bottom:.4rem; }
+.cta-bar-sub { font-size:.8rem; color:var(--mist); }
+.cta-bar-btns { display:flex; gap:.75rem; flex-wrap:wrap; }
+
+/* ─── ARTICLES ─── */
+#articles { background:var(--ink2); }
+.articles-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1px; background:var(--line); }
+.article-card { background:var(--ink2); cursor:pointer; transition:background .3s; }
+.article-card:hover { background:var(--ink3) }
+.article-img { width:100%; height:200px; object-fit:cover; display:block; opacity:.6; transition:opacity .4s,transform .6s; }
+.article-card:hover .article-img { opacity:.8; transform:scale(1.02); }
+.article-body { padding:2rem 2.5rem; }
+.article-cat { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:.6rem; }
+.article-title { font-family:'Playfair Display',serif; font-size:1.25rem; font-style:italic; font-weight:400; color:var(--cream); margin-bottom:.6rem; line-height:1.35; }
+.article-excerpt { font-size:.82rem; color:var(--mist); line-height:1.8; }
+.article-time { font-size:.58rem; letter-spacing:.15em; color:rgba(212,160,23,.5); margin-top:.75rem; }
+
+/* ─── CITATIONS ─── */
+.citations-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--line); }
+.citation-card { background:var(--ink2); padding:2.5rem 2rem; border-left:2px solid var(--gold); transition:background .3s; }
+.citation-card:hover { background:var(--ink3) }
+.citation-text { font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; line-height:1.6; color:var(--cream); margin-bottom:1rem; }
+.citation-author { font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+.citation-theme { font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mist); margin-bottom:.5rem; }
+
+/* ─── EBOOKS ─── */
+#ebooks { background:var(--ink2); }
+.ebooks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--line); }
+.ebook-card { background:var(--ink2); transition:background .3s; }
+.ebook-card:hover { background:var(--ink3) }
+.ebook-cover { width:100%; height:180px; object-fit:cover; display:block; }
+.ebook-cover-placeholder { width:100%; height:180px; background:var(--ink3); display:flex; align-items:center; justify-content:center; }
+.ebook-cover-placeholder svg { opacity:.15 }
+.ebook-body { padding:1.5rem; }
+.ebook-cat { font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; }
+.ebook-title { font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--cream); margin-bottom:.5rem; }
+.ebook-price { font-size:.7rem; color:var(--mist); margin-bottom:1rem; }
+.ebook-btn { display:inline-block; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; padding:.45rem 1.2rem; border:1px solid var(--golddim); color:var(--gold); text-decoration:none; transition:all .3s; }
+.ebook-btn:hover { background:var(--gold); color:var(--ink) }
+
+/* ─── TEMOIGNAGES ─── */
+.temoignages-list { display:flex; flex-direction:column; gap:1px; background:var(--line); }
+.temoignage-card { background:var(--ink2); padding:2.5rem 3rem; border-left:3px solid var(--gold); transition:background .3s; }
+.temoignage-card:hover { background:var(--ink3) }
+.temoignage-stars { color:var(--gold); font-size:.9rem; letter-spacing:.15em; margin-bottom:1rem; }
+.temoignage-text { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.7; color:var(--cream); margin-bottom:1.25rem; }
+.temoignage-author { font-size:.6rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+.temoignage-role { font-size:.7rem; color:var(--mist); margin-top:.25rem; }
+
+/* ─── BIO / À PROPOS ─── */
+#apropos { background:var(--ink2); }
+.bio-inner { display:grid; grid-template-columns:280px 1fr; gap:1px; background:var(--line); }
+.bio-avatar-col {
+  background:var(--ink3); padding:3rem 2.5rem;
+  display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center;
+}
+.bio-avatar-wrap {
+  width:140px; height:140px; border-radius:50%; overflow:hidden;
+  border:2px solid var(--golddim); background:var(--ink2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.bio-avatar-wrap img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.bio-avatar-initials { font-family:'Playfair Display',serif; font-size:3rem; color:var(--gold); font-weight:400; }
+.bio-name-main { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:400; color:var(--cream); line-height:1.2; }
+.bio-role-main { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-top:.3rem; }
+.bio-slogan { font-size:.8rem; color:var(--mist); font-style:italic; line-height:1.6; }
+.bio-tags-col { display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center; }
+.bio-tag-sm { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; padding:.3rem .8rem; border:1px solid var(--golddim); color:rgba(212,160,23,.6); }
+.bio-text-col { background:var(--ink2); padding:3rem 3.5rem; }
+.bio-text { font-size:.88rem; color:var(--fog); line-height:1.95; margin-bottom:1.25rem; }
+.bio-highlight-block { border-left:2px solid var(--gold); padding:1rem 1.5rem; background:var(--golddim); margin:1.5rem 0; }
+.bio-highlight-block p { font-family:'Playfair Display',serif; font-style:italic; font-size:.95rem; color:var(--cream); line-height:1.6; }
+@media (max-width:768px) {
+  .bio-inner { grid-template-columns:1fr; }
+}
+
+/* ─── PODCAST ─── */
+#podcast { background:var(--ink2); }
+.podcast-grid { display:flex; flex-direction:column; gap:1px; background:var(--line); }
+.podcast-card { background:var(--ink2); padding:2rem 2.5rem; display:flex; align-items:flex-start; gap:2rem; transition:background .3s; }
+.podcast-card:hover { background:var(--ink3) }
+.podcast-ep-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:400; color:var(--golddim); flex-shrink:0; width:3rem; text-align:right; line-height:1; padding-top:.2rem; }
+.podcast-ep-body { flex:1; }
+.podcast-ep-serie { font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:.35rem; }
+.podcast-ep-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-style:italic; color:var(--cream); margin-bottom:.4rem; line-height:1.35; }
+.podcast-ep-desc { font-size:.8rem; color:var(--mist); line-height:1.75; margin-bottom:.75rem; }
+.podcast-ep-meta { font-size:.58rem; letter-spacing:.12em; color:rgba(212,160,23,.5); }
+.podcast-links { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.75rem; }
+.podcast-link { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem 1rem; border:1px solid var(--line); color:var(--mist); text-decoration:none; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; font-family:'Jost',sans-serif; transition:all .3s; }
+.podcast-link:hover { border-color:var(--gold); color:var(--gold) }
+.podcast-link.spotify { border-color:rgba(29,185,84,.3); color:rgba(29,185,84,.7); }
+.podcast-link.youtube { border-color:rgba(255,0,0,.3); color:rgba(255,100,100,.7); }
+
+/* ─── PROJETS ─── */
+.projets-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--line); }
+.projet-card { background:var(--ink2); padding:2.5rem; transition:background .3s; }
+.projet-card:hover { background:var(--ink3) }
+.projet-num { font-size:.48rem; letter-spacing:.4em; text-transform:uppercase; color:rgba(212,160,23,.3); margin-bottom:.75rem; }
+.projet-title { font-family:'Playfair Display',serif; font-size:1.25rem; font-style:italic; color:var(--cream); margin-bottom:.6rem; }
+.projet-desc { font-size:.8rem; color:var(--mist); line-height:1.75; margin-bottom:1rem; }
+.projet-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+.projet-tag { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; padding:.3rem .75rem; border:1px solid var(--golddim); color:rgba(212,160,23,.6); }
+
+/* ─── GALERIE ─── */
+.galerie-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1px; background:var(--line); }
+.galerie-cell { aspect-ratio:1; overflow:hidden; cursor:pointer; }
+.galerie-cell img { width:100%; height:100%; object-fit:cover; transition:transform .5s,opacity .4s; opacity:.7; }
+.galerie-cell:hover img { transform:scale(1.06); opacity:1; }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top:1px solid var(--line); padding:4rem; text-align:center;
+  background:var(--ink2);
+}
+.footer-name { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:var(--cream); margin-bottom:.5rem; }
+.footer-tagline { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; }
+.footer-links { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+.footer-links a { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mist); text-decoration:none; transition:color .3s; }
+.footer-links a:hover { color:var(--gold) }
+.footer-copy { font-size:.6rem; color:rgba(245,237,216,.2); }
+
+/* ─── SOCIAL LINKS ─── */
+.social-links-bar { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+.social-link-btn {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem 1.2rem; border:1px solid var(--line);
+  color:var(--mist); text-decoration:none; font-size:.55rem;
+  letter-spacing:.18em; text-transform:uppercase; font-family:'Jost',sans-serif;
+  transition:all .3s;
+}
+.social-link-btn:hover { border-color:var(--gold); color:var(--gold) }
+.social-link-btn svg { flex-shrink:0 }
+/* Bio social links */
+.bio-social-links { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:.5rem; }
+.bio-social-link {
+  display:inline-flex; align-items:center; gap:.4rem; padding:.4rem .9rem;
+  border:1px solid var(--line); color:var(--mist); text-decoration:none;
+  font-size:.52rem; letter-spacing:.15em; text-transform:uppercase;
+  font-family:'Jost',sans-serif; transition:all .3s;
+}
+.bio-social-link:hover { border-color:var(--gold); color:var(--gold) }
+
+/* ─── MODAL ─── */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:500; display:none; align-items:center; justify-content:center; padding:2rem; backdrop-filter:blur(4px); }
+.modal-overlay.open { display:flex }
+.modal { background:var(--ink2); border:1px solid var(--line); max-width:700px; width:100%; max-height:85vh; overflow-y:auto; animation:fadeUp .3s ease both; }
+.modal-head { padding:1.75rem 2.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--ink2); z-index:1; }
+.modal-head-title { font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--cream); }
+.modal-close { background:none; border:none; color:var(--mist); font-size:1.2rem; cursor:pointer; padding:.25rem; transition:color .3s; }
+.modal-close:hover { color:var(--gold) }
+.modal-body { padding:2.5rem; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:768px) {
+  header { padding:1rem 1.5rem; }
+  .header-nav { display:none; }
+  section, .cta-bar { padding:4rem 1.5rem; margin:0; }
+  #hero { padding:6rem 1.5rem 4rem; }
+  .articles-grid { grid-template-columns:1fr; }
+  .citations-grid { grid-template-columns:1fr; }
+  .ebooks-grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="loading-name">Abed Colonna</div>
+  <div class="loading-sub">Chargement en cours…</div>
+  <div class="loading-bar"></div>
+</div>
+
+<!-- NO CONTENT -->
+<div id="no-content" style="display:none;position:fixed;inset:0;background:var(--ink);align-items:center;justify-content:center;flex-direction:column;gap:1rem">
+  <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--cream)">Abed Colonna</p>
+  <p style="font-size:.7rem;color:var(--mist)">Site en cours de configuration.</p>
+</div>
+
+<!-- SITE PRINCIPAL (construit dynamiquement) -->
+<div id="site" style="display:none">
+
+  <!-- HEADER -->
+  <header>
+    <a class="header-brand" href="#">Abed <span>Colonna</span></a>
+    <nav class="header-nav">
+      <a href="#apropos">À propos</a>
+      <a href="#articles">Articles</a>
+      <a href="#citations">Citations</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#ebooks">Ebooks</a>
+      <a href="#projets">Projets</a>
+      <a href="#temoignages">Témoignages</a>
+      <a href="#contact" id="nav-contact-link">Contact</a>
+    </nav>
+    <a class="header-cta" id="header-wa" href="#" target="_blank">📱 Prendre contact</a>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow" id="hero-eyebrow">Coach · Entrepreneur · Acteur Social</div>
+      <h1 class="hero-name" id="hero-name">Abed <em>Colonna</em></h1>
+      <p class="hero-tagline" id="hero-tagline">Rêver pour explorer, voir pour grandir.</p>
+      <div class="hero-roles" id="hero-roles">
+        <span class="hero-role">Coaching</span>
+        <span class="hero-role">Conférences</span>
+        <span class="hero-role">Leadership</span>
+        <span class="hero-role">Bégaiement & Parole</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-primary" id="hero-wa" href="#" target="_blank">📱 Contacter sur WhatsApp</a>
+        <a class="btn-outline" href="#articles">Lire les articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAR -->
+  <div id="cta-section">
+    <div class="cta-bar">
+      <div>
+        <div class="cta-bar-title">Coaching · Conférences · Partenariats</div>
+        <div class="cta-bar-sub" id="cta-message">Prendre contact avec Abed Colonna</div>
+      </div>
+      <div class="cta-bar-btns" id="cta-btns"></div>
+    </div>
+  </div>
+
+  <!-- BIO / À PROPOS -->
+  <section id="apropos" style="display:none">
+    <div class="section-label">Qui est Abed Colonna</div>
+    <h2 class="section-title">À propos</h2>
+    <div class="section-rule"></div>
+    <div class="bio-inner">
+      <div class="bio-avatar-col">
+        <div class="bio-avatar-wrap" id="bio-avatar-wrap">
+          <div class="bio-avatar-initials">AC</div>
+        </div>
+        <div>
+          <div class="bio-name-main">Abed Colonna</div>
+          <div class="bio-role-main" id="bio-role-display">Coach · Entrepreneur · Acteur Social</div>
+        </div>
+        <div class="bio-slogan" id="bio-slogan-display">« La parole, la terre et la conscience sont les piliers du changement. »</div>
+        <div class="bio-tags-col" id="bio-tags-display"></div>
+        <div class="bio-social-links" id="bio-social-links" style="display:none"></div>
+      </div>
+      <div class="bio-text-col" id="bio-text-col">
+        <!-- Rempli dynamiquement depuis Firebase -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section id="articles">
+    <div class="section-label">Réflexions & Partages</div>
+    <h2 class="section-title">Articles publiés</h2>
+    <div class="section-rule"></div>
+    <div class="articles-grid" id="articles-grid"></div>
+  </section>
+
+  <!-- CITATIONS -->
+  <section id="citations">
+    <div class="section-label">Pensées & Vérités</div>
+    <h2 class="section-title">Citations</h2>
+    <div class="section-rule"></div>
+    <div class="citations-grid" id="citations-grid"></div>
+  </section>
+
+  <!-- EBOOKS -->
+  <section id="ebooks">
+    <div class="section-label">Guides & Ressources</div>
+    <h2 class="section-title">Ebooks & Publications</h2>
+    <div class="section-rule"></div>
+    <div class="ebooks-grid" id="ebooks-grid"></div>
+  </section>
+
+  <!-- PODCAST -->
+  <section id="podcast" style="display:none">
+    <div class="section-label">Écouter & S'inspirer</div>
+    <h2 class="section-title">Podcast</h2>
+    <div class="section-rule"></div>
+    <div class="podcast-grid" id="podcast-grid"></div>
+  </section>
+
+  <!-- TEMOIGNAGES -->
+  <section id="temoignages">
+    <div class="section-label">Ils témoignent</div>
+    <h2 class="section-title">Ce qu'ils disent</h2>
+    <div class="section-rule"></div>
+    <div class="temoignages-list" id="temoignages-list"></div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <div class="section-label">Initiatives & Réalisations</div>
+    <h2 class="section-title">Projets</h2>
+    <div class="section-rule"></div>
+    <div class="projets-grid" id="projets-grid">
+      <div class="projet-card">
+        <div class="projet-num">Projet 01</div>
+        <div class="projet-title">Co-Motive</div>
+        <div class="projet-desc">Plateforme de transformation personnelle centrée sur la prise de parole, le développement personnel et l'accompagnement des jeunes. Coaching, podcast, portraits & communiqués de presse.</div>
+        <div class="projet-tags"><span class="projet-tag">Coaching</span><span class="projet-tag">Podcast</span><span class="projet-tag">Jeunesse</span></div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-num">Projet 02</div>
+        <div class="projet-title">Kolia Malamu</div>
+        <div class="projet-desc">Coopérative agroalimentaire engagée dans la valorisation des productions locales, l'organisation communautaire et le développement économique rural. La bouillie nationale.</div>
+        <div class="projet-tags"><span class="projet-tag">Agroalimentaire</span><span class="projet-tag">Local</span><span class="projet-tag">Brazzaville</span></div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-num">Projet 03</div>
+        <div class="projet-title">Chronique Climatique</div>
+        <div class="projet-desc">Plateforme de vulgarisation sur les enjeux climatiques et écologiques. Portraits de leaders verts, ateliers, débats, concours "Un Récit Écologique" & campagnes digitales.</div>
+        <div class="projet-tags"><span class="projet-tag">Environnement</span><span class="projet-tag">Sensibilisation</span><span class="projet-tag">Jeunesse</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" style="display:none">
+    <div class="section-label">Moments & Réalisations</div>
+    <h2 class="section-title">Galerie</h2>
+    <div class="section-rule"></div>
+    <div class="galerie-grid" id="galerie-grid"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-name">Abed Colonna</div>
+    <div class="footer-tagline">Rêver pour explorer, voir pour grandir</div>
+    <div class="social-links-bar" id="footer-social-links"></div>
+    <div class="footer-links" id="footer-links">
+      <a href="#articles">Articles</a>
+      <a href="#citations">Citations</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#ebooks">Ebooks</a>
+      <a href="#projets">Projets</a>
+    </div>
+    <div class="footer-copy">© 2025 Abed Colonna · Tous droits réservés · Brazzaville, Congo</div>
+  </footer>
+
+</div>
+
+<!-- MODAL ARTICLE -->
+<div class="modal-overlay" id="article-modal" onclick="if(event.target===this) closeArticleModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-head-title" id="modal-article-title">Article</span>
+      <button class="modal-close" onclick="closeArticleModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-article-body"></div>
+  </div>
+</div>
+
+<script>
+// Écoute les données Firebase envoyées par le module ES
+window.addEventListener('firebase-data', function(e) {
+  var data = e.detail;
+  if (!data) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('no-content').style.display = 'flex';
+    return;
+  }
+  window._siteData = data;
+  renderSite(data);
+});
+
+var PEXELS_ART = [
+  'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+];
+var PEXELS_BOOK = [
+  'https://images.pexels.com/photos/1130980/pexels-photo-1130980.jpeg?auto=compress&cs=tinysrgb&w=400&h=520&fit=crop',
+  'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400&h=520&fit=crop',
+  'https://images.pexels.com/photos/256517/pexels-photo-256517.jpeg?auto=compress&cs=tinysrgb&w=400&h=520&fit=crop'
+];
+
+function renderSite(data) {
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('site').style.display = 'block';
+
+  var contact = data.contact || {};
+  var waNum   = (contact.whatsapp || '+242064301189').replace(/[^0-9]/g, '');
+  var waLink  = 'https://wa.me/' + waNum;
+
+  // ── Hero dynamique (depuis db.hero ou db.contact) ──
+  var hero = data.hero || {};
+  if (hero.tagline) {
+    document.getElementById('hero-tagline').textContent = hero.tagline;
+  }
+  if (hero.eyebrow) {
+    document.getElementById('hero-eyebrow').textContent = hero.eyebrow;
+  }
+  if (hero.roles && hero.roles.length) {
+    document.getElementById('hero-roles').innerHTML = hero.roles.map(function(r){
+      return '<span class="hero-role">' + escHtml(r) + '</span>';
+    }).join('');
+  }
+  // Mise à jour Open Graph dynamique (si l'avatar change)
+  if (data.avatar) {
+    var ogImg = document.querySelector('meta[property="og:image"]');
+    if (ogImg) ogImg.setAttribute('content', data.avatar);
+  }
+  document.getElementById('hero-wa').href   = waLink;
+  document.getElementById('header-wa').href = waLink;
+
+  // CTA bar
+  document.getElementById('cta-message').textContent = contact.message || 'Prendre contact avec Abed Colonna';
+  var ctaBtns = document.getElementById('cta-btns');
+  ctaBtns.innerHTML = '';
+  if (contact.whatsapp) ctaBtns.innerHTML += '<a href="' + waLink + '" target="_blank" class="btn-primary" style="text-decoration:none">📱 WhatsApp</a>';
+  if (contact.email)    ctaBtns.innerHTML += '<a href="mailto:' + contact.email + '" class="btn-outline" style="text-decoration:none">✉ Email</a>';
+  if (contact.calendly) ctaBtns.innerHTML += '<a href="' + contact.calendly + '" target="_blank" class="btn-outline" style="text-decoration:none">📅 RDV</a>';
+
+  // Footer links
+  var footerLinks = document.getElementById('footer-links');
+  if (contact.whatsapp) footerLinks.innerHTML += '<a href="' + waLink + '" target="_blank">WhatsApp</a>';
+  if (contact.email)    footerLinks.innerHTML += '<a href="mailto:' + contact.email + '">' + contact.email + '</a>';
+
+  // Réseaux sociaux — footer + section bio
+  // Valeurs par défaut si pas encore sauvegardées depuis le CMS
+  var DEFAULT_SOCIALS = {
+    instagram: 'https://www.instagram.com/abedcolonna/',
+    facebook:  'https://www.facebook.com/people/Abed-Colonna/61575906825199/',
+    linkedin:  'https://www.linkedin.com/in/abed-colonna-2b45822b1/',
+    tiktok:    'https://www.tiktok.com/@abed.colonna'
+  };
+
+  var socialDefs = [
+    { key: 'instagram', label: 'Instagram', icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>' },
+    { key: 'facebook',  label: 'Facebook',  icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>' },
+    { key: 'linkedin',  label: 'LinkedIn',  icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' },
+    { key: 'tiktok',    label: 'TikTok',    icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>' },
+    { key: 'youtube',   label: 'YouTube',   icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>' },
+    { key: 'spotify',   label: 'Spotify',   icon: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 13s1.5-2 4-2 4 2 4 2"/><path d="M7 10s2-2.5 5-2.5 5 2.5 5 2.5"/><path d="M9 16s1.3-1.5 3-1.5 3 1.5 3 1.5"/></svg>' }
+  ];
+
+  var footerSocial = document.getElementById('footer-social-links');
+  var bioSocial    = document.getElementById('bio-social-links');
+  var footerSocialHtml = '';
+  var bioSocialHtml    = '';
+
+  socialDefs.forEach(function(s) {
+    // Priorité : valeur Firebase → sinon valeur par défaut
+    var url = contact[s.key] || DEFAULT_SOCIALS[s.key] || '';
+    if (!url) return;
+    footerSocialHtml += '<a href="' + escAttr(url) + '" target="_blank" class="social-link-btn">' + s.icon + s.label + '</a>';
+    bioSocialHtml    += '<a href="' + escAttr(url) + '" target="_blank" class="bio-social-link">'  + s.icon + s.label + '</a>';
+  });
+
+  if (footerSocial) footerSocial.innerHTML = footerSocialHtml;
+  if (bioSocial)    { bioSocial.innerHTML = bioSocialHtml; bioSocial.style.display = 'flex'; }
+
+  // ── Bio / À propos ──
+  var profil = data.profil || data.bio || {};
+  var bioText   = profil.bio || profil.text || '';
+  var bioSlogan = profil.slogan || 'La parole, la terre et la conscience sont les piliers du changement.';
+  var bioRole   = profil.role   || 'Coach · Entrepreneur · Acteur Social';
+  var bioTags   = profil.tags && profil.tags.length ? profil.tags : ['Communication','Bégaiement & Parole','Entrepreneuriat social','Chimie environnementale','Développement durable','Coaching','Agriculture locale'];
+  var avatar    = data.avatar || '';
+
+  // Bio par défaut si jamais "Publier sur le site" n'a pas encore été cliqué
+  var DEFAULT_BIO = "Abed Colonna est un coach en communication, entrepreneur social et acteur engagé dans les dynamiques de développement durable en République du Congo. Il évolue à l'intersection de la communication, de l'agriculture, de la sensibilisation climatique et de la transformation sociale.\n\nÉtudiant en chimie environnementale à l'Université Denis Sassou N'Guesso, il développe une approche transversale reliant science, économie locale et impact communautaire.\n\nAyant grandi avec un bégaiement, Abed Colonna en a fait un point de départ pour construire une expertise autour de la communication et de la confiance en soi. Ses débuts passent par la musique gospel, l'écriture et le slam.\n\n« Ta voix n'a pas besoin d'être parfaite pour être puissante. »\n\nIl a organisé les 1ère et 2ème éditions de la Journée Mondiale du Bégaiement en République du Congo (2024 & 2025), et intervient régulièrement dans des conférences, podcasts et médias numériques.";
+
+  if (!bioText) bioText = DEFAULT_BIO;
+
+  if (avatar) {
+    document.getElementById('bio-avatar-wrap').innerHTML = '<img src="' + escAttr(avatar) + '" alt="Abed Colonna">';
+  }
+  document.getElementById('bio-role-display').textContent = bioRole;
+  document.getElementById('bio-slogan-display').textContent = '« ' + bioSlogan + ' »';
+  document.getElementById('bio-tags-display').innerHTML = bioTags.map(function(t){
+    return '<span class="bio-tag-sm">' + escHtml(t) + '</span>';
+  }).join('');
+
+  var bioCol = document.getElementById('bio-text-col');
+  var paras = bioText.split(/\n\n|\n/).filter(function(p){ return p.trim(); });
+  bioCol.innerHTML = paras.map(function(p){
+    if (p.trim().startsWith('«') || p.trim().startsWith('"')) {
+      return '<div class="bio-highlight-block"><p>' + escHtml(p.trim()) + '</p></div>';
+    }
+    return '<p class="bio-text">' + escHtml(p.trim()) + '</p>';
+  }).join('');
+  document.getElementById('apropos').style.display = '';
+
+  // Articles
+  var articles = (data.articles || []).filter(function(a){ return (a.status || 'published') === 'published'; });
+  var ag = document.getElementById('articles-grid');
+  if (articles.length) {
+    ag.innerHTML = articles.slice(0,9).map(function(a,i){
+      var img = a.img || PEXELS_ART[i % PEXELS_ART.length];
+      return '<div class="article-card" onclick="openArticle(' + JSON.stringify(a).replace(/"/g,'&quot;') + ')">' +
+        '<img class="article-img" src="' + img + '" alt="" loading="lazy">' +
+        '<div class="article-body">' +
+          '<div class="article-cat">' + escHtml(a.cat) + '</div>' +
+          '<div class="article-title">' + escHtml(a.title) + '</div>' +
+          '<div class="article-excerpt">' + escHtml((a.excerpt || (a.content && a.content.substring(0,140)) || '')) + '…</div>' +
+          '<div class="article-time">' + (a.time || 5) + ' min de lecture</div>' +
+        '</div></div>';
+    }).join('');
+    document.getElementById('articles').style.display = '';
+  } else {
+    document.getElementById('articles').style.display = 'none';
+  }
+
+  // Citations
+  var cits = data.citations || [];
+  var cg = document.getElementById('citations-grid');
+  if (cits.length) {
+    cg.innerHTML = cits.slice(0,12).map(function(c){
+      return '<div class="citation-card">' +
+        '<div class="citation-theme">' + escHtml(c.theme || '') + '</div>' +
+        '<div class="citation-text">&ldquo;' + escHtml(c.text) + '&rdquo;</div>' +
+        '<div class="citation-author">— ' + escHtml(c.author || 'Abed Colonna') + '</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('citations').style.display = '';
+  } else {
+    document.getElementById('citations').style.display = 'none';
+  }
+
+  // Ebooks
+  var ebooks = data.ebooks || [];
+  var eg = document.getElementById('ebooks-grid');
+  if (ebooks.length) {
+    eg.innerHTML = ebooks.map(function(eb, i){
+      var cover = eb.img
+        ? '<img class="ebook-cover" src="' + eb.img + '" alt="" loading="lazy">'
+        : '<div class="ebook-cover-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>';
+      var btn = eb.link
+        ? '<a class="ebook-btn" href="' + escAttr(eb.link) + '" target="_blank">Obtenir →</a>'
+        : '<span class="ebook-btn" style="opacity:.4;cursor:default">Bientôt disponible</span>';
+      return '<div class="ebook-card">' + cover +
+        '<div class="ebook-body">' +
+          '<div class="ebook-cat">' + escHtml(eb.cat || '') + '</div>' +
+          '<div class="ebook-title">' + escHtml(eb.title) + '</div>' +
+          '<div class="ebook-price">' + escHtml(eb.price || '') + (eb.pages ? ' · ' + eb.pages + ' pages' : '') + '</div>' +
+          btn +
+        '</div></div>';
+    }).join('');
+    document.getElementById('ebooks').style.display = '';
+  } else {
+    document.getElementById('ebooks').style.display = 'none';
+  }
+
+  // Témoignages
+  var tems = data.testimonials || [];
+  var tl = document.getElementById('temoignages-list');
+  if (tems.length) {
+    tl.innerHTML = tems.map(function(t){
+      var stars = '★'.repeat(parseInt(t.stars) || 5);
+      return '<div class="temoignage-card">' +
+        '<div class="temoignage-stars">' + stars + '</div>' +
+        '<div class="temoignage-text">&ldquo;' + escHtml(t.text) + '&rdquo;</div>' +
+        '<div class="temoignage-author">' + escHtml(t.name || 'Client') + '</div>' +
+        '<div class="temoignage-role">' + escHtml(t.role || '') + '</div>' +
+      '</div>';
+    }).join('');
+    document.getElementById('temoignages').style.display = '';
+  } else {
+    document.getElementById('temoignages').style.display = 'none';
+  }
+
+  // Galerie photos
+  var photos = data.photos || [];
+  if (photos.length) {
+    document.getElementById('galerie').style.display = '';
+    document.getElementById('galerie-grid').innerHTML = photos.slice(0,24).map(function(p){
+      return '<div class="galerie-cell"><img src="' + p.src + '" alt="' + escAttr(p.name || '') + '" loading="lazy"></div>';
+    }).join('');
+  } else {
+    document.getElementById('galerie').style.display = 'none';
+  }
+
+  // Podcasts
+  var podcasts = data.podcasts || [];
+  var pg = document.getElementById('podcast-grid');
+  if (podcasts.length && pg) {
+    pg.innerHTML = podcasts.map(function(ep){
+      var links = '';
+      if (ep.spotify) links += '<a class="podcast-link spotify" href="' + escAttr(ep.spotify) + '" target="_blank">🎵 Spotify</a>';
+      if (ep.youtube) links += '<a class="podcast-link youtube" href="' + escAttr(ep.youtube) + '" target="_blank">▶ YouTube</a>';
+      return '<div class="podcast-card">' +
+        '<div class="podcast-ep-num">' + (ep.num || '') + '</div>' +
+        '<div class="podcast-ep-body">' +
+          '<div class="podcast-ep-serie">' + escHtml(ep.serie || 'Podcast') + '</div>' +
+          '<div class="podcast-ep-title">' + escHtml(ep.title) + '</div>' +
+          (ep.desc ? '<div class="podcast-ep-desc">' + escHtml(ep.desc) + '</div>' : '') +
+          (ep.duration ? '<div class="podcast-ep-meta">⏱ ' + escHtml(ep.duration) + '</div>' : '') +
+          (links ? '<div class="podcast-links">' + links + '</div>' : '') +
+        '</div></div>';
+    }).join('');
+    document.getElementById('podcast').style.display = '';
+  } else {
+    document.getElementById('podcast').style.display = 'none';
+  }
+}
+
+function openArticle(a) {
+  if (typeof a === 'string') { try { a = JSON.parse(a); } catch(e){ return; } }
+  document.getElementById('modal-article-title').textContent = a.title || 'Article';
+  var imgHtml = a.img ? '<img style="width:100%;max-height:280px;object-fit:cover;margin-bottom:1.5rem;display:block" src="' + a.img + '">' : '';
+  document.getElementById('modal-article-body').innerHTML =
+    imgHtml +
+    '<p style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">' + escHtml(a.cat || '') + ' · ' + (a.time || 5) + ' min de lecture</p>' +
+    '<h2 style="font-family:\'Playfair Display\',serif;font-size:1.8rem;font-style:italic;font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.25rem">' + escHtml(a.title) + '</h2>' +
+    '<div style="width:2.5rem;height:1px;background:var(--gold);margin-bottom:1.5rem"></div>' +
+    '<p style="font-size:.87rem;line-height:1.9;color:rgba(240,236,227,.65);white-space:pre-wrap">' + escHtml(a.content || a.excerpt || '') + '</p>';
+  document.getElementById('article-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticleModal() {
+  document.getElementById('article-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(str) {
+  if (!str) return '';
+  return String(str).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeArticleModal(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abed Colonna — Coach · Entrepreneur · Acteur Social</title>
+<meta name="description" content="Abed Colonna — Coach, Entrepreneur et Acteur Social. Rêver pour explorer, voir pour grandir.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://abedcolonna.netlify.app/">
+<meta property="og:title"       content="Abed Colonna — Coach · Entrepreneur · Acteur Social">
+<meta property="og:description" content="Rêver pour explorer, voir pour grandir. Coach en communication, entrepreneur social, pionnier de la Journée Mondiale du Bégaiement au Congo.">
+<meta property="og:image"       content="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale"      content="fr_FR">
+<meta property="og:site_name"   content="Abed Colonna">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Abed Colonna — Coach · Entrepreneur · Acteur Social">
+<meta name="twitter:description" content="Rêver pour explorer, voir pour grandir.">
+<meta name="twitter:image"       content="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307080a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='serif' font-size='20' fill='%23D4A017'%3EAC%3C/text%3E%3C/svg%3E">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8J9Z3EDYN4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8J9Z3EDYN4');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<!-- FIREBASE -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDhl_G735CRlGubRkV_WsA5INYmKQGacwE",
+    authDomain: "abed-colonna-site.firebaseapp.com",
+    databaseURL: "https://abed-colonna-site-default-rtdb.firebaseio.com",
+    projectId: "abed-colonna-site",
+    storageBucket: "abed-colonna-site.firebasestorage.app",
+    messagingSenderId: "429431829235",
+    appId: "1:429431829235:web:7ed904e2a28bee5e41bd86"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  const CACHE_KEY = 'abed_cms_cache';
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const data = JSON.parse(cached);
+      window.dispatchEvent(new CustomEvent('firebase-data', { detail: data }));
+    }
+  } catch(e) {}
+
+  const timeoutId = setTimeout(() => {
+    if (!window._fbDataReceived) {
+      window.dispatchEvent(new CustomEvent('firebase-data', { detail: null }));
+    }
+  }, 5000);
+
+  onValue(ref(database, 'cms'), (snapshot) => {
+    clearTimeout(timeoutId);
+    window._fbDataReceived = true;
+    const data = snapshot.val();
+    if (data) {
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch(e) {}
+    }
+    window.dispatchEvent(new CustomEvent('firebase-data', { detail: data }));
+  });
+</script>
+
+<style>
+:root {
+  --ink:    #07080a;
+  --ink2:   #0e0f12;
+  --ink3:   #141519;
+  --ink4:   #1c1d22;
+  --gold:   #D4A017;
+  --gold2:  #e8b830;
+  --golddim:rgba(212,160,23,.13);
+  --copper: #B5611A;
+  --cream:  #F5EDD8;
+  --fog:    rgba(245,237,216,.55);
+  --mist:   rgba(245,237,216,.28);
+  --ghost:  rgba(245,237,216,.12);
+  --line:   rgba(245,237,216,.08);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+}
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes loadPulse { 0%{left:-100%} 100%{left:100%} }
+
+/* ─── LOADING ─── */
+#loading {
+  position:fixed; inset:0; background:var(--ink);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:2rem; z-index:999;
+}
+.loading-name { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; font-style:italic; color:var(--cream); letter-spacing:.08em; animation:fadeUp 1s ease both; }
+.loading-sub { font-size:.58rem; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); animation:fadeUp 1s ease .2s both; }
+.loading-bar { width:120px; height:1px; background:var(--line); position:relative; overflow:hidden; }
+.loading-bar::after { content:''; position:absolute; left:-100%; top:0; height:100%; width:100%; background:var(--gold); animation:loadPulse 1.4s ease infinite; }
+
+/* ─── HEADER / NAV ─── */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(7,8,10,.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:1.25rem 4rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.header-brand { font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:500; letter-spacing:.06em; color:var(--cream); text-decoration:none; cursor:pointer; }
+.header-brand span { color:var(--gold); font-style:italic; }
+.header-nav { display:flex; gap:2rem; align-items:center; flex-wrap:wrap; }
+.header-nav a {
+  font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mist);
+  text-decoration:none; transition:color .3s; cursor:pointer; background:none; border:none; font-family:'Jost',sans-serif;
+  padding:0;
+}
+.header-nav a:hover, .header-nav a.active { color:var(--gold) }
+.header-cta {
+  background:var(--gold); color:var(--ink); font-family:'Jost',sans-serif;
+  font-size:.58rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
+  padding:.65rem 1.5rem; text-decoration:none; transition:background .3s; cursor:pointer;
+}
+.header-cta:hover { background:var(--gold2); color:var(--ink) }
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display:none; flex-direction:column; gap:5px; cursor:pointer;
+  background:none; border:none; padding:.5rem;
+}
+.hamburger span { display:block; width:22px; height:1px; background:var(--cream); transition:all .3s; }
+.hamburger.open span:nth-child(1) { transform:translateY(6px) rotate(45deg) }
+.hamburger.open span:nth-child(2) { opacity:0 }
+.hamburger.open span:nth-child(3) { transform:translateY(-6px) rotate(-45deg) }
+
+.mobile-nav {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(7,8,10,.97); z-index:99; flex-direction:column;
+  align-items:center; justify-content:center; gap:2rem; backdrop-filter:blur(12px);
+}
+.mobile-nav.open { display:flex }
+.mobile-nav a {
+  font-size:.75rem; letter-spacing:.35em; text-transform:uppercase;
+  color:var(--mist); text-decoration:none; transition:color .3s; padding:.5rem 0; cursor:pointer;
+  background:none; border:none; font-family:'Jost',sans-serif;
+}
+.mobile-nav a:hover { color:var(--gold) }
+.mobile-nav-close {
+  position:absolute; top:1.5rem; right:1.5rem;
+  background:none; border:none; color:var(--mist); font-size:1.5rem; cursor:pointer; transition:color .3s;
+}
+.mobile-nav-close:hover { color:var(--gold) }
+
+/* ─── PAGE VIEW ─── */
+#page-view { animation:fadeIn .35s ease both; }
+
+/* ─── SECTIONS ─── */
+.page-section { padding:6rem 4rem; min-height:60vh; }
+.section-label { font-size:.55rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-bottom:1rem; }
+.section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,3vw,3rem); font-weight:400; font-style:italic; color:var(--cream); line-height:1.15; margin-bottom:1.5rem; }
+.section-rule { width:3rem; height:1px; background:var(--gold); margin-bottom:3rem; }
+.section-desc { font-size:.88rem; color:var(--fog); line-height:1.9; max-width:680px; margin-bottom:2.5rem; }
+
+/* ─── HERO ─── */
+#hero-page {
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden; padding:8rem 4rem 6rem;
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:0;
+  background:radial-gradient(ellipse at 30% 50%, rgba(212,160,23,.06) 0%, transparent 60%),
+             radial-gradient(ellipse at 70% 70%, rgba(181,97,26,.04) 0%, transparent 50%);
+}
+.hero-inner { position:relative; z-index:1; max-width:960px; margin:0 auto; text-align:center; animation:fadeUp .8s ease both; }
+.hero-eyebrow { font-size:.58rem; letter-spacing:.5em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; }
+.hero-name { font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,6rem); font-weight:400; line-height:1.05; color:var(--cream); margin-bottom:1.5rem; }
+.hero-name em { font-style:italic; color:var(--gold); }
+.hero-tagline { font-size:clamp(.9rem,1.5vw,1.2rem); color:var(--fog); line-height:1.9; max-width:600px; margin:0 auto 3rem; }
+.hero-roles { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:3.5rem; }
+.hero-role { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; padding:.45rem 1.25rem; border:1px solid var(--golddim); color:rgba(212,160,23,.7); }
+.hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--gold); color:var(--ink); font-family:'Jost',sans-serif;
+  font-size:.62rem; font-weight:500; letter-spacing:.25em; text-transform:uppercase;
+  padding:1rem 2.5rem; text-decoration:none; transition:background .3s, transform .2s; display:inline-block; cursor:pointer; border:none;
+}
+.btn-primary:hover { background:var(--gold2); transform:translateY(-2px) }
+.btn-outline {
+  background:none; border:1px solid var(--line); color:var(--mist); font-family:'Jost',sans-serif;
+  font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+  padding:1rem 2rem; text-decoration:none; transition:all .3s; display:inline-block; cursor:pointer;
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold) }
+
+/* ─── CTA BAR ─── */
+.cta-bar {
+  background:var(--golddim); border:1px solid rgba(212,160,23,.2);
+  padding:3rem 4rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;
+  margin:0 4rem;
+}
+.cta-bar-title { font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; color:var(--cream); margin-bottom:.4rem; }
+.cta-bar-sub { font-size:.8rem; color:var(--mist); }
+.cta-bar-btns { display:flex; gap:.75rem; flex-wrap:wrap; }
+
+/* ─── ARTICLES ─── */
+.articles-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1px; background:var(--line); }
+.article-card { background:var(--ink2); cursor:pointer; transition:background .3s; overflow:hidden; }
+.article-card:hover { background:var(--ink3) }
+.article-img-wrap { width:100%; height:200px; overflow:hidden; display:block; }
+.article-img { width:100%; height:200px; object-fit:cover; display:block; opacity:.6; transition:opacity .4s,transform .6s; }
+.article-card:hover .article-img { opacity:.8; transform:scale(1.02); }
+.article-body { padding:2rem 2.5rem; }
+.article-cat { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:.6rem; }
+.article-title { font-family:'Playfair Display',serif; font-size:1.25rem; font-style:italic; font-weight:400; color:var(--cream); margin-bottom:.6rem; line-height:1.35; }
+.article-excerpt { font-size:.82rem; color:var(--mist); line-height:1.8; }
+.article-time { font-size:.58rem; letter-spacing:.15em; color:rgba(212,160,23,.5); margin-top:.75rem; }
+
+/* ─── CITATIONS ─── */
+.citations-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--line); }
+.citation-card { background:var(--ink2); padding:2.5rem 2rem; border-left:2px solid var(--gold); transition:background .3s; }
+.citation-card:hover { background:var(--ink3) }
+.citation-text { font-family:'Playfair Display',serif; font-size:1.1rem; font-style:italic; line-height:1.6; color:var(--cream); margin-bottom:1rem; }
+.citation-author { font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+.citation-theme { font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mist); margin-bottom:.5rem; }
+
+/* ─── EBOOKS ─── */
+.ebooks-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--line); }
+.ebook-card { background:var(--ink2); transition:background .3s; }
+.ebook-card:hover { background:var(--ink3) }
+.ebook-cover { width:100%; height:180px; object-fit:cover; display:block; }
+.ebook-cover-placeholder { width:100%; height:180px; background:var(--ink3); display:flex; align-items:center; justify-content:center; }
+.ebook-cover-placeholder svg { opacity:.15 }
+.ebook-body { padding:1.5rem; }
+.ebook-cat { font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.4rem; }
+.ebook-title { font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--cream); margin-bottom:.5rem; }
+.ebook-price { font-size:.7rem; color:var(--mist); margin-bottom:1rem; }
+.ebook-btn { display:inline-block; font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; padding:.45rem 1.2rem; border:1px solid var(--golddim); color:var(--gold); text-decoration:none; transition:all .3s; }
+.ebook-btn:hover { background:var(--gold); color:var(--ink) }
+
+/* ─── TEMOIGNAGES ─── */
+.temoignages-list { display:flex; flex-direction:column; gap:1px; background:var(--line); }
+.temoignage-card { background:var(--ink2); padding:2.5rem 3rem; border-left:3px solid var(--gold); transition:background .3s; }
+.temoignage-card:hover { background:var(--ink3) }
+.temoignage-stars { color:var(--gold); font-size:.9rem; letter-spacing:.15em; margin-bottom:1rem; }
+.temoignage-text { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; line-height:1.7; color:var(--cream); margin-bottom:1.25rem; }
+.temoignage-author { font-size:.6rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); }
+.temoignage-role { font-size:.7rem; color:var(--mist); margin-top:.25rem; }
+
+/* ─── BIO ─── */
+.bio-inner { display:grid; grid-template-columns:280px 1fr; gap:1px; background:var(--line); }
+.bio-avatar-col {
+  background:var(--ink3); padding:3rem 2.5rem;
+  display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center;
+}
+.bio-avatar-wrap {
+  width:140px; height:140px; border-radius:50%; overflow:hidden;
+  border:2px solid var(--golddim); background:var(--ink2);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.bio-avatar-wrap img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.bio-avatar-initials { font-family:'Playfair Display',serif; font-size:3rem; color:var(--gold); font-weight:400; }
+.bio-name-main { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:400; color:var(--cream); line-height:1.2; }
+.bio-role-main { font-size:.55rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-top:.3rem; }
+.bio-slogan { font-size:.8rem; color:var(--mist); font-style:italic; line-height:1.6; }
+.bio-tags-col { display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center; }
+.bio-tag-sm { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; padding:.3rem .8rem; border:1px solid var(--golddim); color:rgba(212,160,23,.6); }
+.bio-text-col { background:var(--ink2); padding:3rem 3.5rem; }
+.bio-text { font-size:.88rem; color:var(--fog); line-height:1.95; margin-bottom:1.25rem; }
+.bio-highlight-block { border-left:2px solid var(--gold); padding:1rem 1.5rem; background:var(--golddim); margin:1.5rem 0; }
+.bio-highlight-block p { font-family:'Playfair Display',serif; font-style:italic; font-size:.95rem; color:var(--cream); line-height:1.6; }
+.bio-social-links { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:.5rem; }
+.bio-social-link {
+  display:inline-flex; align-items:center; gap:.4rem; padding:.4rem .9rem;
+  border:1px solid var(--line); color:var(--mist); text-decoration:none;
+  font-size:.52rem; letter-spacing:.15em; text-transform:uppercase; font-family:'Jost',sans-serif; transition:all .3s;
+}
+.bio-social-link:hover { border-color:var(--gold); color:var(--gold) }
+
+/* ─── PODCAST ─── */
+.podcast-grid { display:flex; flex-direction:column; gap:1px; background:var(--line); }
+.podcast-card { background:var(--ink2); padding:2rem 2.5rem; display:flex; align-items:flex-start; gap:2rem; transition:background .3s; }
+.podcast-card:hover { background:var(--ink3) }
+.podcast-ep-num { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:400; color:var(--golddim); flex-shrink:0; width:3rem; text-align:right; line-height:1; padding-top:.2rem; }
+.podcast-ep-body { flex:1; }
+.podcast-ep-serie { font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:.35rem; }
+.podcast-ep-title { font-family:'Playfair Display',serif; font-size:1.15rem; font-style:italic; color:var(--cream); margin-bottom:.4rem; line-height:1.35; }
+.podcast-ep-desc { font-size:.8rem; color:var(--mist); line-height:1.75; margin-bottom:.75rem; }
+.podcast-ep-meta { font-size:.58rem; letter-spacing:.12em; color:rgba(212,160,23,.5); }
+.podcast-links { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.75rem; }
+.podcast-link { display:inline-flex; align-items:center; gap:.4rem; padding:.35rem 1rem; border:1px solid var(--line); color:var(--mist); text-decoration:none; font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; font-family:'Jost',sans-serif; transition:all .3s; }
+.podcast-link:hover { border-color:var(--gold); color:var(--gold) }
+.podcast-link.spotify { border-color:rgba(29,185,84,.3); color:rgba(29,185,84,.7); }
+.podcast-link.youtube { border-color:rgba(255,0,0,.3); color:rgba(100,100,255,.7); }
+
+/* ─── PROJETS ─── */
+.projets-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--line); }
+.projet-card { background:var(--ink2); padding:2.5rem; transition:background .3s; }
+.projet-card:hover { background:var(--ink3) }
+.projet-num { font-size:.48rem; letter-spacing:.4em; text-transform:uppercase; color:rgba(212,160,23,.3); margin-bottom:.75rem; }
+.projet-title { font-family:'Playfair Display',serif; font-size:1.25rem; font-style:italic; color:var(--cream); margin-bottom:.6rem; }
+.projet-desc { font-size:.8rem; color:var(--mist); line-height:1.75; margin-bottom:1rem; }
+.projet-tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+.projet-tag { font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; padding:.3rem .75rem; border:1px solid var(--golddim); color:rgba(212,160,23,.6); }
+
+/* ─── GALERIE ─── */
+.galerie-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1px; background:var(--line); }
+.galerie-cell { aspect-ratio:1; overflow:hidden; cursor:pointer; }
+.galerie-cell img { width:100%; height:100%; object-fit:cover; transition:transform .5s,opacity .4s; opacity:.7; }
+.galerie-cell:hover img { transform:scale(1.06); opacity:1; }
+
+/* ─── MENTIONS ─── */
+.mentions-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1px; background:var(--line); }
+.mention-card { background:var(--ink2); padding:2rem 2.5rem; transition:background .3s; border-left:2px solid var(--golddim); text-decoration:none; display:block; }
+.mention-card:hover { background:var(--ink3); border-left-color:var(--gold); }
+.mention-media { font-size:.52rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+.mention-title { font-family:'Playfair Display',serif; font-size:1.05rem; font-style:italic; color:var(--cream); margin-bottom:.5rem; line-height:1.4; }
+.mention-desc { font-size:.8rem; color:var(--mist); line-height:1.75; margin-bottom:.75rem; }
+.mention-link { display:inline-flex; align-items:center; gap:.4rem; margin-top:.75rem; font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); border-bottom:1px solid var(--golddim); padding-bottom:1px; }
+
+/* ─── INTERVIEW THUMB ─── */
+.interview-thumb { position:relative; width:160px; flex-shrink:0; overflow:hidden; }
+.interview-thumb img { width:100%; height:90px; object-fit:cover; display:block; opacity:.7; transition:opacity .3s; }
+.interview-thumb:hover img { opacity:1 }
+.interview-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:rgba(255,255,255,.85); }
+
+/* ─── VOIR PLUS ─── */
+.voir-plus-wrap { display:flex; justify-content:center; margin-top:3rem; }
+.voir-plus-btn {
+  background:none; border:1px solid var(--line); color:var(--mist); font-family:'Jost',sans-serif;
+  font-size:.62rem; letter-spacing:.25em; text-transform:uppercase;
+  padding:1rem 2.5rem; cursor:pointer; transition:all .4s; display:inline-flex; align-items:center; gap:.75rem;
+}
+.voir-plus-btn:hover { border-color:var(--gold); color:var(--gold); }
+.voir-plus-btn::after { content:'↓'; font-size:.9rem; transition:transform .3s; }
+.voir-plus-btn:hover::after { transform:translateY(3px); }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top:1px solid var(--line); padding:4rem; text-align:center;
+  background:var(--ink2);
+}
+.footer-name { font-family:'Playfair Display',serif; font-size:1.5rem; font-style:italic; color:var(--cream); margin-bottom:.5rem; }
+.footer-tagline { font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; }
+.footer-nav { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+.footer-nav a { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mist); text-decoration:none; transition:color .3s; cursor:pointer; background:none; border:none; font-family:'Jost',sans-serif; }
+.footer-nav a:hover { color:var(--gold) }
+.footer-links { display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+.footer-links a { font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--mist); text-decoration:none; transition:color .3s; }
+.footer-links a:hover { color:var(--gold) }
+.social-links-bar { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+.social-link-btn { display:inline-flex; align-items:center; gap:.5rem; padding:.5rem 1.2rem; border:1px solid var(--line); color:var(--mist); text-decoration:none; font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; font-family:'Jost',sans-serif; transition:all .3s; }
+.social-link-btn:hover { border-color:var(--gold); color:var(--gold) }
+.social-link-btn svg { flex-shrink:0 }
+.footer-copy { font-size:.6rem; color:rgba(245,237,216,.2); }
+
+/* ─── MODAL ─── */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:500; display:none; align-items:center; justify-content:center; padding:2rem; backdrop-filter:blur(4px); }
+.modal-overlay.open { display:flex }
+.modal { background:var(--ink2); border:1px solid var(--line); max-width:700px; width:100%; max-height:85vh; overflow-y:auto; animation:fadeUp .3s ease both; }
+.modal-head { padding:1.75rem 2.5rem; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--ink2); z-index:1; }
+.modal-head-title { font-family:'Playfair Display',serif; font-size:1rem; font-style:italic; color:var(--cream); }
+.modal-close { background:none; border:none; color:var(--mist); font-size:1.2rem; cursor:pointer; padding:.25rem; transition:color .3s; }
+.modal-close:hover { color:var(--gold) }
+.modal-body { padding:2.5rem; }
+
+/* ─── BÉGAIEMENT ─── */
+.beg-highlight { border-left:2px solid var(--copper); padding:1rem 1.5rem; background:var(--golddim); margin-bottom:2rem; }
+.beg-highlight p { font-family:'Playfair Display',serif; font-style:italic; font-size:.95rem; color:var(--cream); line-height:1.6; }
+
+/* ─── PAGE VIDE ─── */
+.empty-state { padding:4rem; text-align:center; opacity:.4; }
+.empty-state p { font-family:'Playfair Display',serif; font-style:italic; font-size:1.2rem; color:var(--cream); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:768px) {
+  .hamburger { display:flex }
+  .header-cta { display:none }
+  .header-nav { display:none }
+  header { padding:1rem 1.5rem; }
+  .page-section { padding:4rem 1.5rem; }
+  #hero-page { padding:6rem 1.5rem 4rem; }
+  .cta-bar { padding:2rem 1.5rem; margin:0 1.5rem; }
+  .articles-grid { grid-template-columns:1fr; }
+  .citations-grid { grid-template-columns:1fr; }
+  .ebooks-grid { grid-template-columns:repeat(2,1fr); }
+  .bio-inner { grid-template-columns:1fr; }
+  .interview-thumb { width:100%; }
+  .interview-thumb img { height:160px; width:100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="loading-name">Abed Colonna</div>
+  <div class="loading-sub">Chargement en cours…</div>
+  <div class="loading-bar"></div>
+</div>
+
+<!-- NO CONTENT -->
+<div id="no-content" style="display:none;position:fixed;inset:0;background:var(--ink);align-items:center;justify-content:center;flex-direction:column;gap:1rem">
+  <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--cream)">Abed Colonna</p>
+  <p style="font-size:.7rem;color:var(--mist)">Site en cours de configuration.</p>
+</div>
+
+<!-- SITE PRINCIPAL -->
+<div id="site" style="display:none">
+
+  <!-- HEADER -->
+  <header>
+    <a class="header-brand" onclick="navigate('accueil')">Abed <span>Colonna</span></a>
+    <nav class="header-nav">
+      <a onclick="navigate('apropos')"     data-page="apropos">À propos</a>
+      <a onclick="navigate('articles')"    data-page="articles">Articles</a>
+      <a onclick="navigate('citations')"   data-page="citations">Citations</a>
+      <a onclick="navigate('mentions')"    data-page="mentions">Mentions</a>
+      <a onclick="navigate('interviews')"  data-page="interviews">Interviews</a>
+      <a onclick="navigate('podcast')"     data-page="podcast">Podcast</a>
+      <a onclick="navigate('ebooks')"      data-page="ebooks">Ebooks</a>
+      <a onclick="navigate('projets')"     data-page="projets">Projets</a>
+      <a onclick="navigate('begaiement')"  data-page="begaiement">Bégaiement</a>
+      <a onclick="navigate('temoignages')" data-page="temoignages">Témoignages</a>
+      <a onclick="navigate('galerie')"     data-page="galerie">Galerie</a>
+    </nav>
+    <a class="header-cta" id="header-wa" href="#" target="_blank">📱 Prendre contact</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" onclick="toggleMobileNav()">✕</button>
+    <a onclick="navigate('accueil');toggleMobileNav()">Accueil</a>
+    <a onclick="navigate('apropos');toggleMobileNav()">À propos</a>
+    <a onclick="navigate('articles');toggleMobileNav()">Articles</a>
+    <a onclick="navigate('citations');toggleMobileNav()">Citations</a>
+    <a onclick="navigate('mentions');toggleMobileNav()">Mentions</a>
+    <a onclick="navigate('interviews');toggleMobileNav()">Interviews</a>
+    <a onclick="navigate('podcast');toggleMobileNav()">Podcast</a>
+    <a onclick="navigate('ebooks');toggleMobileNav()">Ebooks</a>
+    <a onclick="navigate('projets');toggleMobileNav()">Projets</a>
+    <a onclick="navigate('begaiement');toggleMobileNav()">Bégaiement</a>
+    <a onclick="navigate('temoignages');toggleMobileNav()">Témoignages</a>
+    <a onclick="navigate('galerie');toggleMobileNav()">Galerie</a>
+    <a onclick="toggleMobileNav();document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+  </div>
+
+  <!-- ZONE DE RENDU DE PAGE -->
+  <div id="page-view"></div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-name">Abed Colonna</div>
+    <div class="footer-tagline">Rêver pour explorer, voir pour grandir</div>
+    <div class="social-links-bar" id="footer-social-links"></div>
+    <nav class="footer-nav">
+      <a onclick="navigate('apropos')">À propos</a>
+      <a onclick="navigate('articles')">Articles</a>
+      <a onclick="navigate('citations')">Citations</a>
+      <a onclick="navigate('podcast')">Podcast</a>
+      <a onclick="navigate('ebooks')">Ebooks</a>
+      <a onclick="navigate('projets')">Projets</a>
+      <a onclick="navigate('interviews')">Interviews</a>
+      <a onclick="navigate('temoignages')">Témoignages</a>
+      <a onclick="navigate('galerie')">Galerie</a>
+    </nav>
+    <div class="footer-links" id="footer-links"></div>
+    <div class="footer-copy">© 2026 Abed Colonna · Tous droits réservés · Brazzaville, Congo</div>
+  </footer>
+
+</div>
+
+<!-- MODAL ARTICLE -->
+<div class="modal-overlay" id="article-modal" onclick="if(event.target===this) closeArticleModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-head-title" id="modal-article-title">Article</span>
+      <button class="modal-close" onclick="closeArticleModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-article-body"></div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+//  ÉTAT GLOBAL
+// ════════════════════════════════════════════════════════════
+var _siteRendered = false;
+var _waLink = '#';
+var PAGE_LIMIT = 12; // Nombre d'items affichés par défaut
+
+var PEXELS_ART = [
+  'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
+  'https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+];
+
+var DEFAULT_SOCIALS = {
+  instagram: 'https://www.instagram.com/abedcolonna/',
+  facebook:  'https://www.facebook.com/people/Abed-Colonna/61575906825199/',
+  linkedin:  'https://www.linkedin.com/in/abed-colonna-2b45822b1/',
+  tiktok:    'https://www.tiktok.com/@abed.colonna'
+};
+
+var socialDefs = [
+  { key:'instagram', label:'Instagram', icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>' },
+  { key:'facebook',  label:'Facebook',  icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>' },
+  { key:'linkedin',  label:'LinkedIn',  icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>' },
+  { key:'tiktok',    label:'TikTok',    icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>' },
+  { key:'youtube',   label:'YouTube',   icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>' },
+  { key:'spotify',   label:'Spotify',   icon:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 13s1.5-2 4-2 4 2 4 2"/><path d="M7 10s2-2.5 5-2.5 5 2.5 5 2.5"/><path d="M9 16s1.3-1.5 3-1.5 3 1.5 3 1.5"/></svg>' }
+];
+
+// ════════════════════════════════════════════════════════════
+//  ROUTER SPA
+// ════════════════════════════════════════════════════════════
+var _currentPage = 'accueil';
+
+function navigate(page) {
+  if (!page) page = 'accueil';
+  _currentPage = page;
+  window.scrollTo(0, 0);
+
+  // Mettre à jour le titre de l'onglet
+  var pageTitles = {
+    accueil:     'Abed Colonna — Coach · Entrepreneur · Acteur Social',
+    apropos:     'À propos — Abed Colonna',
+    articles:    'Articles — Abed Colonna',
+    citations:   'Citations — Abed Colonna',
+    mentions:    'Mentions presse — Abed Colonna',
+    interviews:  'Interviews — Abed Colonna',
+    podcast:     'Podcast — Abed Colonna',
+    ebooks:      'Ebooks — Abed Colonna',
+    projets:     'Projets — Abed Colonna',
+    begaiement:  'Bégaiement & Parole — Abed Colonna',
+    temoignages: 'Témoignages — Abed Colonna',
+    galerie:     'Galerie — Abed Colonna',
+    positionnement: 'Positionnement — Abed Colonna'
+  };
+  document.title = pageTitles[page] || 'Abed Colonna';
+
+  // Mettre à jour les liens actifs dans la nav
+  document.querySelectorAll('.header-nav a[data-page]').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('data-page') === page);
+  });
+
+  // Mettre à jour l'URL sans rechargement
+  var hash = page === 'accueil' ? '' : '#' + page;
+  history.pushState({ page: page }, '', hash || window.location.pathname);
+
+  renderPage(page);
+}
+
+window.addEventListener('popstate', function(e) {
+  var page = (e.state && e.state.page) || (location.hash.slice(1)) || 'accueil';
+  navigate(page);
+});
+
+// ════════════════════════════════════════════════════════════
+//  RENDU PAR PAGE
+// ════════════════════════════════════════════════════════════
+function renderPage(page) {
+  var data = window._siteData || {};
+  var pv = document.getElementById('page-view');
+  if (!pv) return;
+
+  switch(page) {
+    case 'accueil':     pv.innerHTML = renderPageAccueil(data); break;
+    case 'apropos':     pv.innerHTML = renderPageApropos(data); break;
+    case 'articles':    pv.innerHTML = renderPageArticles(data, PAGE_LIMIT); break;
+    case 'citations':   pv.innerHTML = renderPageCitations(data, PAGE_LIMIT); break;
+    case 'mentions':    pv.innerHTML = renderPageMentions(data, PAGE_LIMIT); break;
+    case 'interviews':  pv.innerHTML = renderPageInterviews(data, PAGE_LIMIT); break;
+    case 'podcast':     pv.innerHTML = renderPagePodcast(data, PAGE_LIMIT); break;
+    case 'ebooks':      pv.innerHTML = renderPageEbooks(data, PAGE_LIMIT); break;
+    case 'projets':     pv.innerHTML = renderPageProjets(data, PAGE_LIMIT); break;
+    case 'begaiement':  pv.innerHTML = renderPageBegaiement(data); break;
+    case 'temoignages': pv.innerHTML = renderPageTemoignages(data, PAGE_LIMIT); break;
+    case 'galerie':     pv.innerHTML = renderPageGalerie(data, PAGE_LIMIT); break;
+    case 'positionnement': pv.innerHTML = renderPagePositionnement(data); break;
+    default: pv.innerHTML = renderPageAccueil(data);
+  }
+
+  // Relancer l'animation de page
+  pv.style.animation = 'none';
+  pv.offsetHeight;
+  pv.style.animation = '';
+}
+
+// ──────────────── ACCUEIL ────────────────
+function renderPageAccueil(data) {
+  var hero = data.hero || {};
+  var contact = data.contact || {};
+  var eyebrow = hero.eyebrow || 'Coach · Entrepreneur · Acteur Social';
+  var tagline = hero.tagline || 'Rêver pour explorer, voir pour grandir.';
+  var roles = hero.roles || ['Coaching','Conférences','Leadership','Bégaiement & Parole'];
+
+  var ctaBtns = '';
+  if (contact.whatsapp) ctaBtns += '<a href="' + _waLink + '" target="_blank" class="btn-primary" style="text-decoration:none">📱 WhatsApp</a>';
+  if (contact.email) ctaBtns += '<a href="mailto:' + escAttr(contact.email) + '" class="btn-outline" style="text-decoration:none">✉ Email</a>';
+  if (contact.calendly) ctaBtns += '<a href="' + escAttr(contact.calendly) + '" target="_blank" class="btn-outline" style="text-decoration:none">📅 RDV</a>';
+
+  return '<section id="hero-page">' +
+    '<div class="hero-bg"></div>' +
+    '<div class="hero-inner">' +
+      '<div class="hero-eyebrow">' + escHtml(eyebrow) + '</div>' +
+      '<h1 class="hero-name">Abed <em>Colonna</em></h1>' +
+      '<p class="hero-tagline">' + escHtml(tagline) + '</p>' +
+      '<div class="hero-roles">' + roles.map(function(r){ return '<span class="hero-role">' + escHtml(r) + '</span>'; }).join('') + '</div>' +
+      '<div class="hero-actions">' +
+        '<a class="btn-primary" href="' + _waLink + '" target="_blank">📱 Contacter sur WhatsApp</a>' +
+        '<a class="btn-outline" onclick="navigate(\'articles\')" style="cursor:pointer">Lire les articles</a>' +
+      '</div>' +
+    '</div>' +
+  '</section>' +
+  '<div style="padding:0">' +
+    '<div class="cta-bar">' +
+      '<div>' +
+        '<div class="cta-bar-title">Coaching · Conférences · Partenariats</div>' +
+        '<div class="cta-bar-sub">' + escHtml(contact.message || 'Prendre contact avec Abed Colonna') + '</div>' +
+      '</div>' +
+      '<div class="cta-bar-btns">' + ctaBtns + '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+// ──────────────── À PROPOS ────────────────
+function renderPageApropos(data) {
+  var profil = data.profil || data.bio || {};
+  var bioText = profil.bio || profil.text || DEFAULT_BIO_TEXT;
+  var bioSlogan = profil.slogan || 'La parole, la terre et la conscience sont les piliers du changement.';
+  var bioRole = profil.role || 'Coach · Entrepreneur · Acteur Social';
+  var bioTags = (profil.tags && profil.tags.length) ? profil.tags : ['Communication','Bégaiement & Parole','Entrepreneuriat social','Chimie environnementale','Développement durable','Coaching','Agriculture locale'];
+  var avatar = data.avatar || '';
+  var contact = data.contact || {};
+
+  var avatarHtml = avatar
+    ? '<img src="' + escAttr(avatar) + '" alt="Abed Colonna">'
+    : '<div class="bio-avatar-initials">AC</div>';
+
+  var tagsHtml = bioTags.map(function(t){ return '<span class="bio-tag-sm">' + escHtml(t) + '</span>'; }).join('');
+
+  var socialHtml = '';
+  socialDefs.forEach(function(s) {
+    var url = contact[s.key] || DEFAULT_SOCIALS[s.key] || '';
+    if (!url) return;
+    socialHtml += '<a href="' + escAttr(url) + '" target="_blank" class="bio-social-link">' + s.icon + s.label + '</a>';
+  });
+
+  var paras = bioText.split(/\n\n|\n/).filter(function(p){ return p.trim(); });
+  var parasHtml = paras.map(function(p){
+    if (p.trim().startsWith('«') || p.trim().startsWith('"')) {
+      return '<div class="bio-highlight-block"><p>' + escHtml(p.trim()) + '</p></div>';
+    }
+    return '<p class="bio-text">' + escHtml(p.trim()) + '</p>';
+  }).join('');
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Qui est Abed Colonna</div>' +
+    '<h2 class="section-title">À propos</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="bio-inner">' +
+      '<div class="bio-avatar-col">' +
+        '<div class="bio-avatar-wrap">' + avatarHtml + '</div>' +
+        '<div><div class="bio-name-main">Abed Colonna</div><div class="bio-role-main">' + escHtml(bioRole) + '</div></div>' +
+        '<div class="bio-slogan">« ' + escHtml(bioSlogan) + ' »</div>' +
+        '<div class="bio-tags-col">' + tagsHtml + '</div>' +
+        (socialHtml ? '<div class="bio-social-links">' + socialHtml + '</div>' : '') +
+      '</div>' +
+      '<div class="bio-text-col">' + parasHtml + '</div>' +
+    '</div>' +
+  '</section>';
+}
+
+// ──────────────── ARTICLES ────────────────
+function renderPageArticles(data, limit) {
+  var articles = (data.articles || []).filter(function(a){ return (a.status || 'published') === 'published'; });
+  var visible = articles.slice(0, limit);
+  var hasMore = articles.length > limit;
+
+  var cardsHtml = visible.map(function(a, i){
+    var img = a.img || PEXELS_ART[i % PEXELS_ART.length];
+    return '<div class="article-card" onclick="openArticle(' + JSON.stringify(a).replace(/"/g,'&quot;') + ')">' +
+      '<div class="article-img-wrap"><img class="article-img" src="' + img + '" alt="" loading="lazy"></div>' +
+      '<div class="article-body">' +
+        '<div class="article-cat">' + escHtml(a.cat) + '</div>' +
+        '<div class="article-title">' + escHtml(a.title) + '</div>' +
+        '<div class="article-excerpt">' + escHtml((a.excerpt || (a.content && a.content.substring(0,140)) || '')) + '…</div>' +
+        '<div class="article-time">' + (a.time || 5) + ' min de lecture</div>' +
+      '</div></div>';
+  }).join('');
+
+  if (!articles.length) cardsHtml = '<div class="empty-state"><p>Aucun article pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'articles\',' + articles.length + ')">Voir tous les articles (' + articles.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Réflexions & Partages</div>' +
+    '<h2 class="section-title">Articles publiés</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="articles-grid" id="articles-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── CITATIONS ────────────────
+function renderPageCitations(data, limit) {
+  var cits = data.citations || [];
+  var visible = cits.slice(0, limit);
+  var hasMore = cits.length > limit;
+
+  var cardsHtml = visible.map(function(c){
+    return '<div class="citation-card">' +
+      '<div class="citation-theme">' + escHtml(c.theme || '') + '</div>' +
+      '<div class="citation-text">&ldquo;' + escHtml(c.text) + '&rdquo;</div>' +
+      '<div class="citation-author">— ' + escHtml(c.author || 'Abed Colonna') + '</div>' +
+    '</div>';
+  }).join('');
+
+  if (!cits.length) cardsHtml = '<div class="empty-state"><p>Aucune citation pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'citations\',' + cits.length + ')">Voir toutes les citations (' + cits.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Pensées & Vérités</div>' +
+    '<h2 class="section-title">Citations</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="citations-grid" id="citations-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── MENTIONS ────────────────
+var MENTIONS_STATIQUES = [
+  { media:'Elikia Magazine · 2025', title:'« Ta voix n\'a pas besoin d\'être parfaite pour être puissante »', desc:'Interview exclusive sur le parcours d\'Abed Colonna, sa vision du coaching et son message aux jeunes congolais.', url:'https://www.elikiamagazine.com/post/abed-colonna-aux-jeunes-je-dis-ta-voix-n-a-pas-besoin-d-%C3%AAtre-parfaite-pour-%C3%AAtre-puissante' },
+  { media:'Les Dépêches de Brazzaville', title:'Portrait : Abed Colonna propose un nouvel art fou', desc:'Portrait du coach et entrepreneur social à travers ses projets Co-Motive, Kolia Malamu et Chronique Climatique.', url:'https://www.adiac-congo.com/' },
+  { media:'Lacongolaise242', title:'Au cœur de la startup Kolia Malamu de Abed Colonna', desc:'Reportage sur la coopérative agroalimentaire Kolia Malamu et son rôle dans l\'économie locale de Brazzaville.', url:'https://www.lacongolaise242.com/' },
+  { media:'Les Dépêches de Brazzaville', title:'« Le bégaiement n\'est pas un handicap mais une particularité »', desc:'Interview sur la Journée Mondiale du Bégaiement au Congo et la vision d\'Abed Colonna sur la prise de parole.', url:'https://www.adiac-congo.com/' },
+  { media:'Lacongolaise242 · 2024', title:'1ère célébration de la Journée mondiale du bégaiement au Congo', desc:'Couverture de la première édition historique organisée par Abed Colonna à Brazzaville le 22 octobre 2024.', url:'https://www.lacongolaise242.com/' }
+];
+
+function renderPageMentions(data, limit) {
+  var mentions = (data.mentions && data.mentions.length) ? data.mentions : MENTIONS_STATIQUES;
+  var visible = mentions.slice(0, limit);
+  var hasMore = mentions.length > limit;
+
+  var cardsHtml = visible.map(function(m){
+    var linkAttr = (m.url || m.link) ? 'href="' + escAttr(m.url || m.link) + '" target="_blank"' : 'href="#"';
+    return '<a ' + linkAttr + ' class="mention-card">' +
+      '<div class="mention-media">' + escHtml(m.media || '') + (m.date ? ' · ' + new Date(m.date).toLocaleDateString('fr-FR') : '') + '</div>' +
+      '<div class="mention-title">' + escHtml(m.title || '') + '</div>' +
+      (m.desc ? '<div class="mention-desc">' + escHtml(m.desc) + '</div>' : '') +
+      ((m.url || m.link) ? '<span class="mention-link">Lire l\'article →</span>' : '') +
+    '</a>';
+  }).join('');
+
+  if (!mentions.length) cardsHtml = '<div class="empty-state"><p>Aucune mention pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'mentions\',' + mentions.length + ')">Voir toutes les mentions (' + mentions.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Presse & Médias</div>' +
+    '<h2 class="section-title">Mentions</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="mentions-grid" id="mentions-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── INTERVIEWS ────────────────
+function renderPageInterviews(data, limit) {
+  var interviews = data.interviews || [];
+  var visible = interviews.slice(0, limit);
+  var hasMore = interviews.length > limit;
+
+  var cardsHtml = visible.map(function(iv){
+    var youtubeId = '';
+    if (iv.youtube) {
+      var match = iv.youtube.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
+      if (match) youtubeId = match[1];
+    }
+    var thumb = youtubeId
+      ? '<div class="interview-thumb" onclick="window.open(\'' + escAttr(iv.youtube) + '\',\'_blank\')" style="cursor:pointer"><img src="https://img.youtube.com/vi/' + youtubeId + '/hqdefault.jpg" alt="" loading="lazy"><div class="interview-play">▶</div></div>'
+      : '';
+    return '<div class="podcast-card">' +
+      thumb +
+      '<div class="podcast-ep-body">' +
+        '<div class="podcast-ep-serie">' + escHtml(iv.media || 'Interview') + '</div>' +
+        '<div class="podcast-ep-title">' + escHtml(iv.title) + '</div>' +
+        (iv.desc ? '<div class="podcast-ep-desc">' + escHtml(iv.desc) + '</div>' : '') +
+        (iv.date ? '<div class="podcast-ep-meta">📅 ' + new Date(iv.date).toLocaleDateString('fr-FR') + '</div>' : '') +
+        (iv.youtube ? '<div class="podcast-links"><a class="podcast-link youtube" href="' + escAttr(iv.youtube) + '" target="_blank">▶ Voir sur YouTube</a></div>' : '') +
+      '</div></div>';
+  }).join('');
+
+  if (!interviews.length) cardsHtml = '<div class="empty-state"><p>Aucune interview pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'interviews\',' + interviews.length + ')">Voir toutes les interviews (' + interviews.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Vu & Entendu</div>' +
+    '<h2 class="section-title">Interviews</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="podcast-grid" id="interviews-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── PODCAST ────────────────
+function renderPagePodcast(data, limit) {
+  var podcasts = data.podcasts || data.podcast || [];
+  var visible = podcasts.slice(0, limit);
+  var hasMore = podcasts.length > limit;
+
+  var cardsHtml = visible.map(function(ep){
+    var links = '';
+    if (ep.spotify) links += '<a class="podcast-link spotify" href="' + escAttr(ep.spotify) + '" target="_blank">🎵 Spotify</a>';
+    if (ep.youtube) links += '<a class="podcast-link youtube" href="' + escAttr(ep.youtube) + '" target="_blank">▶ YouTube</a>';
+    return '<div class="podcast-card">' +
+      '<div class="podcast-ep-num">' + (ep.num || '') + '</div>' +
+      '<div class="podcast-ep-body">' +
+        '<div class="podcast-ep-serie">' + escHtml(ep.serie || 'Podcast') + '</div>' +
+        '<div class="podcast-ep-title">' + escHtml(ep.title) + '</div>' +
+        (ep.desc ? '<div class="podcast-ep-desc">' + escHtml(ep.desc) + '</div>' : '') +
+        (ep.duration ? '<div class="podcast-ep-meta">⏱ ' + escHtml(ep.duration) + '</div>' : '') +
+        (links ? '<div class="podcast-links">' + links + '</div>' : '') +
+      '</div></div>';
+  }).join('');
+
+  if (!podcasts.length) cardsHtml = '<div class="empty-state"><p>Aucun épisode pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'podcast\',' + podcasts.length + ')">Voir tous les épisodes (' + podcasts.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Écouter & S\'inspirer</div>' +
+    '<h2 class="section-title">Podcast</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="podcast-grid" id="podcast-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── EBOOKS ────────────────
+function renderPageEbooks(data, limit) {
+  var ebooks = data.ebooks || [];
+  var visible = ebooks.slice(0, limit);
+  var hasMore = ebooks.length > limit;
+
+  var cardsHtml = visible.map(function(eb){
+    var cover = eb.img
+      ? '<img class="ebook-cover" src="' + eb.img + '" alt="" loading="lazy">'
+      : '<div class="ebook-cover-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>';
+    var btn = eb.link
+      ? '<a class="ebook-btn" href="' + escAttr(eb.link) + '" target="_blank">Obtenir →</a>'
+      : '<span class="ebook-btn" style="opacity:.4;cursor:default">Bientôt disponible</span>';
+    return '<div class="ebook-card">' + cover +
+      '<div class="ebook-body">' +
+        '<div class="ebook-cat">' + escHtml(eb.cat || '') + '</div>' +
+        '<div class="ebook-title">' + escHtml(eb.title) + '</div>' +
+        '<div class="ebook-price">' + escHtml(eb.price || '') + (eb.pages ? ' · ' + eb.pages + ' pages' : '') + '</div>' +
+        btn +
+      '</div></div>';
+  }).join('');
+
+  if (!ebooks.length) cardsHtml = '<div class="empty-state"><p>Aucun ebook pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'ebooks\',' + ebooks.length + ')">Voir tous les ebooks (' + ebooks.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Guides & Ressources</div>' +
+    '<h2 class="section-title">Ebooks & Publications</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="ebooks-grid" id="ebooks-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── PROJETS ────────────────
+function renderPageProjets(data, limit) {
+  var projets = data.projets || data.projects || [];
+  var staticProjets = [
+    { num:'Projet 01', title:'Co-Motive', desc:'Plateforme de transformation personnelle centrée sur la prise de parole, le développement personnel et l\'accompagnement des jeunes.', tags:['Coaching','Podcast','Jeunesse'] },
+    { num:'Projet 02', title:'Kolia Malamu', desc:'Coopérative agroalimentaire engagée dans la valorisation des productions locales, l\'organisation communautaire et le développement économique rural.', tags:['Agroalimentaire','Local','Brazzaville'] },
+    { num:'Projet 03', title:'Chronique Climatique', desc:'Plateforme de vulgarisation sur les enjeux climatiques et écologiques. Portraits de leaders verts, ateliers, débats et campagnes digitales.', tags:['Environnement','Sensibilisation','Jeunesse'] }
+  ];
+  if (!projets.length) projets = staticProjets;
+
+  var visible = projets.slice(0, limit);
+  var hasMore = projets.length > limit;
+
+  var cardsHtml = visible.map(function(p, i){
+    var tags = (p.tags || []).map(function(t){ return '<span class="projet-tag">' + escHtml(t) + '</span>'; }).join('');
+    var link = p.link ? '<a href="' + escAttr(p.link) + '" target="_blank" class="ebook-btn" style="margin-top:1rem;display:inline-block">Voir →</a>' : '';
+    return '<div class="projet-card">' +
+      '<div class="projet-num">' + escHtml(p.num || 'Projet 0' + (i+1)) + '</div>' +
+      '<div class="projet-title">' + escHtml(p.title || p.name) + '</div>' +
+      '<div class="projet-desc">' + escHtml(p.desc || p.description || '') + '</div>' +
+      (tags ? '<div class="projet-tags">' + tags + '</div>' : '') +
+      link +
+    '</div>';
+  }).join('');
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'projets\',' + projets.length + ')">Voir tous les projets (' + projets.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Initiatives & Réalisations</div>' +
+    '<h2 class="section-title">Projets</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="projets-grid" id="projets-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── BÉGAIEMENT ────────────────
+function renderPageBegaiement(data) {
+  var beg = data.begaiement || {};
+  var intro = beg.intro || '🎙 Abed Colonna est le <strong style="color:var(--cream)">pionnier</strong> de la Journée Mondiale du Bégaiement au Congo-Brazzaville. Une réalisation historique, deux fois accomplie.';
+  var para = beg.para || 'Le bégaiement est au cœur de l\'identité d\'Abed : « Ta voix n\'a pas besoin d\'être parfaite pour être puissante. » Cette phrase, née de sa propre expérience, est aujourd\'hui un moteur pour des milliers de jeunes congolais.';
+
+  var editions = (beg.editions && beg.editions.length) ? beg.editions : [
+    { year:'2024', serie:'1ère Édition · 22 octobre 2024', title:'1ère Journée Mondiale du Bégaiement au Congo', desc:'Première édition historique organisée par Abed Colonna à Brazzaville. Conférences, témoignages de personnes bègues, ateliers de prise de parole. Couverture médiatique nationale par Lacongolaise242 et Les Dépêches de Brazzaville.', tags:['Bégaiement','Brazzaville','Pionnier'] },
+    { year:'2025', serie:'2ème Édition · 22 octobre 2025', title:'2ème Journée Mondiale du Bégaiement au Congo', desc:'Deuxième édition, confirmant la pérennité de l\'événement. Témoignages, coaching collectif et sensibilisation publique. Abed Colonna ancre durablement cette journée dans le calendrier culturel et social du Congo-Brazzaville.', tags:['Bégaiement','Congo','2025'] }
+  ];
+
+  var editionsHtml = editions.map(function(e){
+    var tags = (e.tags || []).map(function(t){ return '<span class="projet-tag">' + escHtml(t) + '</span>'; }).join('');
+    return '<div class="podcast-card">' +
+      '<div class="podcast-ep-num" style="color:var(--gold);font-size:1.4rem;width:4.5rem;text-align:center">' + escHtml(e.year) + '</div>' +
+      '<div class="podcast-ep-body">' +
+        '<div class="podcast-ep-serie">' + escHtml(e.serie) + '</div>' +
+        '<div class="podcast-ep-title">' + escHtml(e.title) + '</div>' +
+        (e.desc ? '<div class="podcast-ep-desc">' + escHtml(e.desc) + '</div>' : '') +
+        (tags ? '<div class="projet-tags" style="margin-top:.75rem">' + tags + '</div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Engagement · Pionnier</div>' +
+    '<h2 class="section-title">Bégaiement & Parole</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div style="max-width:800px;margin:0 auto 3rem">' +
+      '<div class="beg-highlight"><p>' + intro + '</p></div>' +
+      '<p class="bio-text">' + escHtml(para) + '</p>' +
+    '</div>' +
+    '<div class="podcast-grid" style="max-width:900px;margin:0 auto">' + editionsHtml + '</div>' +
+  '</section>';
+}
+
+// ──────────────── TÉMOIGNAGES ────────────────
+function renderPageTemoignages(data, limit) {
+  var tems = data.testimonials || [];
+  var visible = tems.slice(0, limit);
+  var hasMore = tems.length > limit;
+
+  var cardsHtml = visible.map(function(t){
+    var stars = '★'.repeat(parseInt(t.stars) || 5);
+    return '<div class="temoignage-card">' +
+      '<div class="temoignage-stars">' + stars + '</div>' +
+      '<div class="temoignage-text">&ldquo;' + escHtml(t.text) + '&rdquo;</div>' +
+      '<div class="temoignage-author">' + escHtml(t.name || 'Client') + '</div>' +
+      '<div class="temoignage-role">' + escHtml(t.role || '') + '</div>' +
+    '</div>';
+  }).join('');
+
+  if (!tems.length) cardsHtml = '<div class="empty-state"><p>Aucun témoignage pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'temoignages\',' + tems.length + ')">Voir tous les témoignages (' + tems.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Ils témoignent</div>' +
+    '<h2 class="section-title">Ce qu\'ils disent</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="temoignages-list" id="temoignages-list">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── GALERIE ────────────────
+function renderPageGalerie(data, limit) {
+  var photos = data.photos || [];
+  var visible = photos.slice(0, limit);
+  var hasMore = photos.length > limit;
+
+  var cardsHtml = visible.map(function(p){
+    return '<div class="galerie-cell"><img src="' + p.src + '" alt="' + escAttr(p.name || '') + '" loading="lazy"></div>';
+  }).join('');
+
+  if (!photos.length) cardsHtml = '<div class="empty-state"><p>Aucune photo pour l\'instant.</p></div>';
+
+  var voirPlusHtml = hasMore
+    ? '<div class="voir-plus-wrap"><button class="voir-plus-btn" onclick="showMore(\'galerie\',' + photos.length + ')">Voir toutes les photos (' + photos.length + ')</button></div>'
+    : '';
+
+  return '<section class="page-section" style="background:var(--ink2)">' +
+    '<div class="section-label">Moments & Réalisations</div>' +
+    '<h2 class="section-title">Galerie</h2>' +
+    '<div class="section-rule"></div>' +
+    '<div class="galerie-grid">' + cardsHtml + '</div>' +
+    voirPlusHtml +
+  '</section>';
+}
+
+// ──────────────── POSITIONNEMENT ────────────────
+function renderPagePositionnement(data) {
+  var pos = data.positionnement || {};
+  var intro = pos.intro || 'Abed Colonna construit un positionnement rare à <strong style="color:var(--cream)">4 dimensions</strong> — il relie humain, économie, environnement et expression :';
+  var signature = pos.signature || 'La parole, la terre et la conscience sont les piliers du changement.';
+  var piliers = (pos.piliers && pos.piliers.length) ? pos.piliers : [
+    { num:'01', title:'Communication & Prise de parole', desc:'Coach en communication, animateur de conférences, témoin engagé sur le bégaiement.' },
+    { num:'02', title:'Développement personnel', desc:'Co-Motive : structurer l\'expression, construire l\'identité, inspirer la confiance en soi.' },
+    { num:'03', title:'Agriculture & Économie locale', desc:'Kolia Malamu : valoriser le local, créer de la valeur économique réelle.' },
+    { num:'04', title:'Sensibilisation environnementale', desc:'Chronique Climatique : rendre accessibles les enjeux climatiques, mobiliser la jeunesse.' }
+  ];
+
+  var piliersHtml = piliers.map(function(p){
+    return '<div class="projet-card">' +
+      '<div class="projet-num" style="color:var(--gold);font-size:1.1rem;font-family:\'Playfair Display\',serif;font-style:italic">' + escHtml(p.num) + '</div>' +
+      '<div class="projet-title">' + escHtml(p.title) + '</div>' +
+      '<div class="projet-desc">' + escHtml(p.desc) + '</div>' +
+    '</div>';
+  }).join('');
+
+  return '<section class="page-section">' +
+    '<div class="section-label">Vision & Piliers</div>' +
+    '<h2 class="section-title">Positionnement</h2>' +
+    '<div class="section-rule"></div>' +
+    '<p class="bio-text" style="max-width:700px;margin-bottom:3rem">' + intro + '</p>' +
+    '<div class="projets-grid">' + piliersHtml + '</div>' +
+    '<div class="bio-highlight-block" style="max-width:700px;margin:3rem auto 0">' +
+      '<p>Signature : « ' + escHtml(signature) + ' »</p>' +
+    '</div>' +
+  '</section>';
+}
+
+// ════════════════════════════════════════════════════════════
+//  VOIR PLUS — recharge la page avec toutes les données
+// ════════════════════════════════════════════════════════════
+function showMore(page, total) {
+  // On recharge la page en question avec une limite très haute
+  var data = window._siteData || {};
+  var pv = document.getElementById('page-view');
+  if (!pv) return;
+  var BIG = 9999;
+  switch(page) {
+    case 'articles':    pv.innerHTML = renderPageArticles(data, BIG); break;
+    case 'citations':   pv.innerHTML = renderPageCitations(data, BIG); break;
+    case 'mentions':    pv.innerHTML = renderPageMentions(data, BIG); break;
+    case 'interviews':  pv.innerHTML = renderPageInterviews(data, BIG); break;
+    case 'podcast':     pv.innerHTML = renderPagePodcast(data, BIG); break;
+    case 'ebooks':      pv.innerHTML = renderPageEbooks(data, BIG); break;
+    case 'projets':     pv.innerHTML = renderPageProjets(data, BIG); break;
+    case 'temoignages': pv.innerHTML = renderPageTemoignages(data, BIG); break;
+    case 'galerie':     pv.innerHTML = renderPageGalerie(data, BIG); break;
+  }
+  // Scroll vers le bas de la grille nouvellement chargée
+  window.scrollTo({ top: window.scrollY + 200, behavior: 'smooth' });
+}
+
+// ════════════════════════════════════════════════════════════
+//  INITIALISATION FIREBASE
+// ════════════════════════════════════════════════════════════
+window.addEventListener('firebase-data', function(e) {
+  var data = e.detail;
+
+  if (!data && !_siteRendered) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('no-content').style.display = 'flex';
+    return;
+  }
+  if (!data) return;
+
+  window._siteData = data;
+  _siteRendered = true;
+
+  // Contact / WhatsApp
+  var contact = data.contact || {};
+  var waNum = (contact.whatsapp || '+242064301189').replace(/[^0-9]/g, '');
+  _waLink = 'https://wa.me/' + waNum;
+  document.getElementById('header-wa').href = _waLink;
+
+  // Open Graph
+  var ogimage = data.ogimage || {};
+  if (ogimage.url) {
+    var ogEl = document.querySelector('meta[property="og:image"]');
+    var twEl = document.querySelector('meta[name="twitter:image"]');
+    if (ogEl) ogEl.setAttribute('content', ogimage.url);
+    if (twEl) twEl.setAttribute('content', ogimage.url);
+  }
+
+  // Footer sociaux
+  var footerSocial = document.getElementById('footer-social-links');
+  if (footerSocial) {
+    var html = '';
+    socialDefs.forEach(function(s) {
+      var url = contact[s.key] || DEFAULT_SOCIALS[s.key] || '';
+      if (!url) return;
+      html += '<a href="' + escAttr(url) + '" target="_blank" class="social-link-btn">' + s.icon + s.label + '</a>';
+    });
+    footerSocial.innerHTML = html;
+  }
+
+  // Footer liens contact
+  var footerLinks = document.getElementById('footer-links');
+  if (footerLinks) {
+    var flHtml = '';
+    if (contact.whatsapp) flHtml += '<a href="' + _waLink + '" target="_blank">WhatsApp</a>';
+    if (contact.email) flHtml += '<a href="mailto:' + escAttr(contact.email) + '">' + escHtml(contact.email) + '</a>';
+    footerLinks.innerHTML = flHtml;
+  }
+
+  // Afficher le site
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('site').style.display = 'block';
+
+  // Charger la page selon le hash de l'URL
+  var initialPage = location.hash.slice(1) || 'accueil';
+  navigate(initialPage);
+});
+
+// ════════════════════════════════════════════════════════════
+//  MODAL ARTICLE
+// ════════════════════════════════════════════════════════════
+function openArticle(a) {
+  if (typeof a === 'string') { try { a = JSON.parse(a); } catch(e){ return; } }
+  document.getElementById('modal-article-title').textContent = a.title || 'Article';
+  var imgHtml = a.img ? '<img style="width:100%;max-height:280px;object-fit:cover;margin-bottom:1.5rem;display:block" src="' + a.img + '">' : '';
+  document.getElementById('modal-article-body').innerHTML =
+    imgHtml +
+    '<p style="font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem">' + escHtml(a.cat || '') + ' · ' + (a.time || 5) + ' min de lecture</p>' +
+    '<h2 style="font-family:\'Playfair Display\',serif;font-size:1.8rem;font-style:italic;font-weight:400;line-height:1.2;color:var(--cream);margin-bottom:1.25rem">' + escHtml(a.title) + '</h2>' +
+    '<div style="width:2.5rem;height:1px;background:var(--gold);margin-bottom:1.5rem"></div>' +
+    '<p style="font-size:.87rem;line-height:1.9;color:rgba(240,236,227,.65);white-space:pre-wrap">' + escHtml(a.content || a.excerpt || '') + '</p>';
+  document.getElementById('article-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticleModal() {
+  document.getElementById('article-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ════════════════════════════════════════════════════════════
+//  UTILS
+// ════════════════════════════════════════════════════════════
+var DEFAULT_BIO_TEXT = "Abed Colonna est un coach en communication, entrepreneur social et acteur engagé dans les dynamiques de développement durable en République du Congo. Il évolue à l'intersection de la communication, de l'agriculture, de la sensibilisation climatique et de la transformation sociale.\n\nÉtudiant en chimie environnementale à l'Université Denis Sassou N'Guesso, il développe une approche transversale reliant science, économie locale et impact communautaire.\n\nAyant grandi avec un bégaiement, Abed Colonna en a fait un point de départ pour construire une expertise autour de la communication et de la confiance en soi.\n\n« Ta voix n'a pas besoin d'être parfaite pour être puissante. »\n\nIl a organisé les 1ère et 2ème éditions de la Journée Mondiale du Bégaiement en République du Congo (2024 & 2025), et intervient régulièrement dans des conférences, podcasts et médias numériques.";
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(str) {
+  if (!str) return '';
+  return String(str).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function toggleMobileNav() {
+  var nav = document.getElementById('mobile-nav');
+  var btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+}
+
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeArticleModal(); });
+</script>
+</body>
+</html>
